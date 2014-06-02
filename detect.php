@@ -1,9 +1,23 @@
 <?php
 
+	// These headers will be unused if called from CLI
 	header("Content-Type: text/javascript");
 	header("Cache-Control: no-cache, no-store, must-revalidate, max-age=0"); 
 	header("Pragma: no-cache");
 	header("Expires: 0"); 
+
+	// If calling from CLI, parse arguments given
+	// argv[1] = GET parameters formatted as a query string
+	// argv[2] = HTTP headers formatted as a query string
+	if($argv) {
+		// Parse GET params into local $_REQUEST object, which unifies
+		// parameters from GET, POST etc.
+		parse_str($argv[1], $_REQUEST);
+
+		// Parse HTTP headers into PHP env
+		parse_str($argv[2], $_SERVER);
+	}
+
 
 	include_once('libraries/utilities.php');
 	include_once('libraries/whichbrowser.php');
