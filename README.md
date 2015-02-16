@@ -1,3 +1,5 @@
+FORK: Added support for calling from a CLI passing in extra params via query strings
+
 WhichBrowser
 ============
 
